@@ -9,31 +9,33 @@
 #include <fstream>
 using namespace std;
 typedef vector< boost::dynamic_bitset<> > bitset_vector;
-//MIND THE DIFFERENCE BETWEEN BIT VECTOR AND BITSET VECTOR !!!!, (QUADRATIC)
+#define precision 5
+//MIND THE DIFFERENCE BETWEEN BIT VECTOR AND BITSET VECTOR !!!! (QUADRATIC)
 
 class Problem
 {
 	float a;
 	float b;
 	int dimension;
-	int log10eps;
 	int nr_of_intervals;
 	int one_argument_length;
 	int full_length;
-public:
-	vector<Solution> Population;
-	float (*function_used)(const vector<float>& args);
+	float (*function)(const vector<float>& args);
+	vector<Solution*> Population;
 
-	Problem(float a, float b, int dimension, int log10eps)
+public:
+	Problem(float (*function)(const vector<float>& args), float a, float b, int dimension)
 		: a(a), b(b),
 		dimension(dimension),
-		log10eps(log10eps)
+		function(function)
 	{
 		ComputeSpecs();
 		Population.reserve(100);
-		for (auto &chromosome: Population)
+
+		for (int i = 0; i < 100; i++)
 		{
-			chromosome.bits_representation.reserve(full_length);
+			Solution* chromosome = new Solution(full_length, dimension);
+			Population.push_back(chromosome);
 		}
 	}
 	boost::dynamic_bitset<> getRandomSequence()
@@ -47,22 +49,19 @@ public:
 		}
 		return res;
 	}
-	void SetFunction(float (*arg_function)(const std::vector<float>& args))
-	{
-		function_used = arg_function;
-	}
 	void GeneratePopulation()
 	{
-		for(auto &chromosome: Population)
+		for(auto chromosome: Population)
 		{
-			chromosome.bits_representation = getRandomSequence();
-			chromosome.solution_args = ConvertBitsetToVector(chromosome.bits_representation);
-			chromosome.solution_value = function_used(chromosome.solution_args);
+			chromosome->bits_representation = getRandomSequence();
+			chromosome->solution_args = ConvertBitsetToVector(chromosome->bits_representation);
+			chromosome->solution_value = function(chromosome->solution_args);
+			cout << chromosome->solution_value << " ";
 		}
 	}
 	void ComputeSpecs()
 	{
-		nr_of_intervals = (b - a) * pow(10, log10eps);
+		nr_of_intervals = (b - a) * pow(10, precision);
 		one_argument_length = (int)abs(ceil(log2(nr_of_intervals)));
 		full_length = one_argument_length * dimension;
 		cout << "Specificatiile situatiei:\n";

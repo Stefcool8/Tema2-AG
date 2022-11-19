@@ -8,6 +8,11 @@ public:
     boost::dynamic_bitset<> bits_representation;
     vector<float> solution_args;
     float solution_value;
+    Solution(float full_length, float dimension)
+    {
+        this->bits_representation.reserve(full_length);
+        this->solution_args.reserve(dimension);
+    }
     Solution operator=(const Solution rvalue)
     {
         bits_representation = rvalue.bits_representation;

@@ -1,7 +1,20 @@
 ﻿  Genetic Algorithm - Rank selection.cpp
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Functions.h(13,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Functions.h(17,23): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Functions.h(47,23): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Problem.h(69,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Problem.h(100,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Genetic Algorithm - Rank selection.vcxproj -> D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\x64\Debug\Genetic Algorithm - Rank selection.exe
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Functions.h(13,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Functions.h(17,23): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Functions.h(47,23): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Solution.h(13,43): warning C4244: 'argument': conversion from 'float' to 'boost::dynamic_bitset<unsigned long,std::allocator<Block>>::size_type', possible loss of data
+          with
+          [
+              Block=unsigned long
+          ]
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Solution.h(14,37): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(37,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(37,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(64,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(95,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(106,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(107,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(110,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(117,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Genetic Algorithm - Rank selection.cpp(8,44): warning C4305: 'argument': truncation from 'double' to 'float'
+  Genetic Algorithm - Rank selection.vcxproj -> D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\x64\Debug\Genetic Algorithm - Rank selection.exe
