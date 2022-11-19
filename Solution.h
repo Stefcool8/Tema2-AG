@@ -12,6 +12,7 @@ public:
     {
         this->bits_representation.reserve(full_length);
         this->solution_args.reserve(dimension);
+        this->solution_value = 0;
     }
     Solution operator=(const Solution rvalue)
     {

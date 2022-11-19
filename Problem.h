@@ -6,7 +6,7 @@
 #include "Functions.h"
 #include "Solution.h"
 #include <time.h>
-#include <fstream>
+#include <algorithm>
 using namespace std;
 typedef vector< boost::dynamic_bitset<> > bitset_vector;
 #define precision 5
@@ -35,7 +35,7 @@ public:
 		for (int i = 0; i < 100; i++)
 		{
 			Solution* chromosome = new Solution(full_length, dimension);
-			Population.push_back(chromosome);
+			Population.emplace_back(chromosome);
 		}
 	}
 	boost::dynamic_bitset<> getRandomSequence()
@@ -56,7 +56,7 @@ public:
 			chromosome->bits_representation = getRandomSequence();
 			chromosome->solution_args = ConvertBitsetToVector(chromosome->bits_representation);
 			chromosome->solution_value = function(chromosome->solution_args);
-			cout << chromosome->solution_value << " ";
+			//cout << chromosome->bits_representation << endl;
 		}
 	}
 	void ComputeSpecs()
@@ -95,17 +95,18 @@ public:
 			argument = (argument / (pow(2, (one_argument_length)) - 1));
 			argument *= (b - a);
 			argument += a;
-			float_vector.push_back(argument);
+			float_vector.emplace_back(argument);
 		}
 		return float_vector;
 	}
-	void crossover(Solution &chrm1, Solution &chrm2)
+	void crossover_two_cromosomes(Solution *&chrm1, Solution *&chrm2)
 	{
 		random_device device2;
 		uniform_int_distribution<int> distribution2(1, one_argument_length-2);
 		float first_point = distribution2(device2);
 		float second_point = distribution2(device2);
 		float aux;
+
 		while (second_point == first_point)
 			second_point = distribution2(device2);
 		if (second_point < first_point)
@@ -116,9 +117,32 @@ public:
 		}
 		for (int i = first_point; i <= second_point; i++)
 		{
-			aux = chrm1.bits_representation[i];
-			chrm1.bits_representation[i] = chrm2.bits_representation[i];
-			chrm2.bits_representation[i] = aux;
+			aux = chrm1->bits_representation[i];
+			chrm1->bits_representation[i] = chrm2->bits_representation[i];
+			chrm2->bits_representation[i] = aux;
+		}
+	}
+	void CrossoverPopulation(float cross_probability)
+	{
+		random_device device3;
+		uniform_int_distribution<int> distribution3(0, 1);
+		vector<int> chosen_chromosomes;
+		auto rng = std::default_random_engine{};
+		int i = 0;
+		
+		for (i = 0; i < 100; i++)
+		{
+			if (distribution3(device3) < cross_probability)
+			{
+				chosen_chromosomes.emplace_back(i);	// add indices of chromosomes from population for crossover
+			}
+		}
+		shuffle(begin(chosen_chromosomes), end(chosen_chromosomes), rng); // choose pairs randomly
+		for (i = 0; i < chosen_chromosomes.size() / 2; i += 2)
+		{
+			cout << Population[i]->bits_representation << endl << Population[i + 1]->bits_representation << endl << endl;
+			crossover_two_cromosomes(Population[i], Population[i + 1]);
+			cout << Population[i]->bits_representation << endl << Population[i + 1]->bits_representation << endl << endl;
 		}
 	}
 };
