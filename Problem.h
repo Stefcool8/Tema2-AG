@@ -21,12 +21,9 @@ class Problem
 	int one_argument_length;
 	int full_length;
 public:
-	/*Solution current_solution;
-	Solution final_solution;*/
 	vector<Solution> Population;
 	float (*function_used)(const vector<float>& args);
 
-	//ctrs
 	Problem(float a, float b, int dimension, int log10eps)
 		: a(a), b(b),
 		dimension(dimension),
@@ -63,7 +60,6 @@ public:
 			chromosome.solution_value = function_used(chromosome.solution_args);
 		}
 	}
-
 	void ComputeSpecs()
 	{
 		nr_of_intervals = (b - a) * pow(10, log10eps);
@@ -103,5 +99,27 @@ public:
 			float_vector.push_back(argument);
 		}
 		return float_vector;
+	}
+	void crossover(Solution &chrm1, Solution &chrm2)
+	{
+		random_device device2;
+		uniform_int_distribution<int> distribution2(1, one_argument_length-2);
+		float first_point = distribution2(device2);
+		float second_point = distribution2(device2);
+		float aux;
+		while (second_point == first_point)
+			second_point = distribution2(device2);
+		if (second_point < first_point)
+		{
+			aux = first_point;
+			first_point = second_point;
+			second_point = first_point;
+		}
+		for (int i = first_point; i <= second_point; i++)
+		{
+			aux = chrm1.bits_representation[i];
+			chrm1.bits_representation[i] = chrm2.bits_representation[i];
+			chrm2.bits_representation[i] = aux;
+		}
 	}
 };
