@@ -12,9 +12,7 @@ D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Proble
 D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(37,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(64,29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(95,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(106,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(107,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(111,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(118,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Genetic Algorithm - Rank selection.cpp(8,44): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(114,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Problem.h(170,12): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\Genetic Algorithm - Rank selection.cpp(8,43): warning C4305: 'argument': truncation from 'double' to 'float'
   Genetic Algorithm - Rank selection.vcxproj -> D:\Facultate\Anul II\Genetici\Genetic Algorithm - Rank selection\Tema2-AG\x64\Debug\Genetic Algorithm - Rank selection.exe

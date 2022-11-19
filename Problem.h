@@ -103,8 +103,8 @@ public:
 	{
 		random_device device2;
 		uniform_int_distribution<int> distribution2(1, one_argument_length-2);
-		float first_point = distribution2(device2);
-		float second_point = distribution2(device2);
+		int first_point = distribution2(device2);
+		int second_point = distribution2(device2);
 		float aux;
 
 		while (second_point == first_point)
@@ -144,5 +144,79 @@ public:
 			crossover_two_cromosomes(Population[i], Population[i + 1]);
 			cout << Population[i]->bits_representation << endl << Population[i + 1]->bits_representation << endl << endl;
 		}
+	}
+	struct AscendingOptimum
+	{
+		bool operator()(Solution* chrm1, Solution* chrm2)
+		{
+			return (chrm1->solution_value < chrm2->solution_value);
+		}
+	};
+	void RankSelection()
+	{
+
+		//sort Population
+		sort(Population.begin(), Population.end(), AscendingOptimum());
+		//index of chromosome i is i+1;
+		// 0,..,n-1 have the indexes 1,..,n
+
+		//compute probabilities.
+		int rank = 0;
+		int i = 0;
+		float cumulativeProbs[100];
+		for (auto chromosome : Population)
+		{
+			rank++;
+			float p = 1 / (float)100 * (1.4 - (rank + 1) * 2 * (1.4 - 1) / (float)(100 - 1));
+
+
+			cout << "for rank " << rank << "with fitness: "
+				<< chromosome->solution_value
+				<< "the probability is: " << p << endl;
+
+
+			if (i == 0)
+				cumulativeProbs[i] = p;
+			else
+				cumulativeProbs[i] = cumulativeProbs[i - 1] + p;
+			i++;
+
+		}
+		float s0 = 0;
+		for (auto x : Population)
+		{
+			s0 += x->solution_value;
+		}
+		cout << "sume1 : " << s0 << endl;
+		cout << "The cumulated probabilities look like this: \n";
+		for (float p : cumulativeProbs)
+			cout << p << "; ";
+		//let's choose some of the chrm's which we will later crossover
+		std::random_device rd;
+		std::uniform_real_distribution<float> dist2(0, 1.0);
+		vector<Solution*> Population2;
+		Population2.reserve(100);
+		while (Population2.size() != 100)
+		{
+			int j = 0;
+			float r = dist2(rd);
+			while (cumulativeProbs[j] < r)
+				j++;
+			//select j chromosome of population
+			if (j < 100)
+			{
+				Population2.emplace_back(Population[j]);
+			}
+
+		}
+
+		sort(Population2.begin(), Population2.end(), AscendingOptimum());
+		float s = 0;
+		for (auto x : Population2)
+		{
+			cout << x->solution_value << endl;
+			s += x->solution_value;
+		}
+		cout << "sume2 : " << s << endl;
 	}
 };
